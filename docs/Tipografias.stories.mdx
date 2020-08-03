@@ -1,0 +1,38 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+
+import { typography } from './styles.js';
+
+<Meta title="Docs|Tipografias" />
+
+# Tipografías
+Usando la fuente Rubik en dos de sus pesos: Light y Medium
+
+**Font:** Rubik, Rubik Medium
+
+**Weights:** 300(light), 500(medium)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s3),
+    Number(typography.size.s2),
+    Number(typography.size.s1),
+    Number(typography.size.h4),
+    Number(typography.size.h3),
+    Number(typography.size.h2),
+    Number(typography.size.h1),
+  ]}
+  fontWeight={typography.weight.light}
+/>
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s3),
+    Number(typography.size.s2),
+    Number(typography.size.s1),
+    Number(typography.size.h4),
+    Number(typography.size.h3),
+    Number(typography.size.h2),
+    Number(typography.size.h1),
+  ]}
+  fontWeight={typography.weight.medium}
+/>

@@ -1,0 +1,24 @@
+.error {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    display: inline-block;
+    // TODO: Resolver image
+    // background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+    background-size: cover;
+    background-position: center;
+    width: 40vh;
+    height: 40vh;
+  }
+
+  &__message {
+    font-size: 28px;
+    color: #2f8e89;
+  }
+};
+

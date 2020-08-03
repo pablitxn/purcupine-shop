@@ -1,16 +1,12 @@
+// Redux
 import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router";
-
 // Reducers
-import Session from "state/session/reducer";
-import Shop from "state/shop/reducer";
+import auth from "state/auth/reducer";
+import shop from "state/shop/reducer";
 
+const reducers = combineReducers({
+	auth,
+	shop,
+});
 
-const createRootReducer = (history) =>
-  combineReducers({
-    Session,
-    Shop,
-    router: connectRouter(history),
-  });
-
-export default createRootReducer;
+export default reducers;

@@ -1,5 +1,5 @@
 // Sagas
-import overviewSagas from "./overview.sagas";
-import reviewSagas from "./preview.sagas";
+import products from "./products.sagas";
+import sections from "./sections.sagas";
 
-export const sagas = [...overviewSagas, ...reviewSagas];
+export const sagas = [...products, ...sections];

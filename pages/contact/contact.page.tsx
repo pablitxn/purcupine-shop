@@ -5,7 +5,7 @@ import Head from "next/head";
 // Custom Components
 import AppLayout from "components/layout/app-layout/app-layout.component";
 
-const Shop: FC = () => {
+const Contact: FC = () => {
 	return (
 		<div className="">
 			<Head>
@@ -14,11 +14,11 @@ const Shop: FC = () => {
 			</Head>
 
 			<AppLayout>
-				<h2>SHOPPING</h2>
-				<span>cards</span>
+				<h2>CONTACT </h2>
+				<span>ashdlkasd</span>
 			</AppLayout>
 		</div>
 	);
 };
 
-export default Shop;
+export default Contact;

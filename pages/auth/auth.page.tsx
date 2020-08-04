@@ -3,7 +3,7 @@ import { FC } from "react";
 // SEO
 import Head from "next/head";
 // Custom Components
-import AppLayout from "components/layout/app/app.component";
+import AppLayout from "components/layout/app-layout/app-layout.component";
 
 const Auth: FC = () => {
 	return (

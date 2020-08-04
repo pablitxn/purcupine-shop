@@ -4,7 +4,7 @@ import { ContainerProps } from "./container.types";
 // Styles
 import "./container.component.scss";
 // Custom Components
-import CartItem from "components/layout/app/navbar/cart-dropdown/item/item.component";
+import CartItem from "components/layout/navbar/cart-dropdown/item/item.component";
 
 const Container: FC<ContainerProps> = ({ cartItems = [] }) => {
 	const handleClick = (event: any) => {

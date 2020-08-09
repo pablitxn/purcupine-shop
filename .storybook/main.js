@@ -1,6 +1,6 @@
 const path = require("path");
 module.exports = {
-	stories: ["../**/*.stories.(ts|tsx|js|jsx|mdx)"],
+	stories: ["../**/*.stories.(ts|tsx|js|jsx)"],
 	webpackFinal: async (config) => {
 		config.module.rules.push({
 			test: /\.(ts|tsx)$/,

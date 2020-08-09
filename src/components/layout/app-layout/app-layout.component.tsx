@@ -1,26 +1,26 @@
 // Types
 import { FC } from "react";
-import { AppLayoutProps } from "./app-layout.types";
+import { IAppLayout } from "./app-layout.types";
 // Custom Components
 import Navbar from "components/layout/navbar/navbar.component";
+// Styles
+import "./app-layout.styles.less";
 // AntD
-import { Layout, Divider } from "antd";
+import { Layout } from "antd";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
-const AppLayout: FC<AppLayoutProps> = ({ children, navbarProps }) => {
+const AppLayout: FC<IAppLayout> = ({ children, navbarProps }) => {
 	return (
 		<>
 			<Layout>
-				<Header>
+				<Header className="header">
 					<Navbar {...navbarProps} />
 				</Header>
-				<Layout>
-					<Sider>sider bronx</Sider>
-					<Divider type="vertical" />
-					<Content>{children}</Content>
-				</Layout>
-				<Footer>porcupine-shop® 2020 </Footer>
+				<Content className="site-layout">
+					<div className="site-layout-background">{children}</div>
+				</Content>
+				<Footer className="footer">porcupine-shop® 2020 </Footer>
 			</Layout>
 		</>
 	);

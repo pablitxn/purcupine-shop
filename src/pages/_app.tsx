@@ -1,5 +1,7 @@
 // Types
 import { FC } from "react";
+// Styles
+import "./styles.less";
 
 interface App {
 	Component: any;

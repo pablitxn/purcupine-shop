@@ -1,13 +1,13 @@
 // Types
 import { FC } from "react";
-import { NavbarProps } from "./navbar.types";
+import { INavbar } from "./navbar.types";
 // Custom Components
 import CartDropdown from "components/layout/navbar/cart-dropdown/container/container.component";
 import CartDropdownIcon from "components/layout/navbar/cart-dropdown/icon/icon.component";
 // AntD
 import { Menu } from "antd";
 
-const Navbar: FC<NavbarProps> = ({ activeUser }) => {
+const Navbar: FC<INavbar> = ({ activeUser }) => {
 	const hidden = true;
 	const cartItems = [];
 

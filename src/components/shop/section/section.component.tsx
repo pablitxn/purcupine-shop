@@ -1,12 +1,12 @@
 // Types
 import { FC } from "react";
-import { SectionProps } from "./section.types";
+import { ISection } from "./section.types";
 
-const Section: FC<SectionProps> = ({ section, size, className }) => {
+const Section: FC<ISection> = ({ section }) => {
 	const { title, imageUrl } = section;
 
 	return (
-		<div className={`${size} ${className} section`}>
+		<div>
 			<img src={imageUrl} className="background-image" />
 			<div className="content">
 				<h2 className="title">{title.toUpperCase()}</h2>

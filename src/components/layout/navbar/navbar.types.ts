@@ -1,5 +1,5 @@
-import { ActiveUser } from "components/layout/app-layout/app-layout.types";
+// import { ActiveUser } from "components/layout/app-layout/app-layout.types";
 
-export interface NavbarProps {
-  activeUser?: ActiveUser;
+export interface INavbar {
+  activeUser?: any;
 }

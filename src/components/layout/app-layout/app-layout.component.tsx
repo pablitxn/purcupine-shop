@@ -15,11 +15,9 @@ const AppLayout: FC<IAppLayout> = ({ children, navbarProps }) => {
 		<>
 			<Layout>
 				<Header className="header">
-					<Navbar {...navbarProps} />
+					<Navbar {...navbarProps} style={{ width: "100%" }} />
 				</Header>
-				<Content className="site-layout">
-					<div className="site-layout-background">{children}</div>
-				</Content>
+				<Content className="site-layout">{children}</Content>
 				<Footer className="footer">porcupine-shop® 2020 </Footer>
 			</Layout>
 		</>

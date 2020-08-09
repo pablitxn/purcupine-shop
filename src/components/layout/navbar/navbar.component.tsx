@@ -1,36 +1,61 @@
 // Types
-import { FC } from "react";
+import { FC, useState } from "react";
 import { INavbar } from "./navbar.types";
-// Custom Components
-import CartDropdown from "components/layout/navbar/cart-dropdown/container/container.component";
-import CartDropdownIcon from "components/layout/navbar/cart-dropdown/icon/icon.component";
+// Styles
+import "./navbar.styles.less";
 // AntD
-import { Menu } from "antd";
+import { Menu, Input, Button } from "antd";
+import {
+	LoginOutlined,
+	UserOutlined,
+	ShoppingOutlined,
+	HomeFilled,
+} from "@ant-design/icons";
+// Assets
+import Logo from "assets/icons/logo";
 
 const Navbar: FC<INavbar> = ({ activeUser }) => {
-	const hidden = true;
-	const cartItems = [];
+	const [state, setState] = useState({ current: "mail" });
 
-	// TODO: abstraer `Link > a`
+	const { Search } = Input;
+	const { current } = state;
+
+	const handleNavigation = (e) => {
+		console.log(`navbar / handleNavigation -> key: ${e.key}`);
+		setState({ ...state, current: e.key });
+	};
 
 	return (
-		<>
-			<div className="logo" />
-			<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-				<Menu.Item key="1">nav 1</Menu.Item>
-				<Menu.Item key="2">nav 2</Menu.Item>
-				<Menu.Item key="3">nav 3</Menu.Item>
+		<Menu
+			theme="dark"
+			mode="horizontal"
+			defaultSelectedKeys={["1"]}
+			onClick={handleNavigation}
+			selectedKeys={[current]}
+			className="navbar"
+		>
+			<Menu.Item key="home" className="logo" icon={<HomeFilled />}></Menu.Item>
+			<Menu.Item className="search">
+				<Search
+					placeholder="¿Qué producto estás buscando?"
+					onSearch={(value) => console.log(value)}
+					enterButton
+					size="large"
+				/>
+			</Menu.Item>
+			<Menu.Item key="session" className="session">
 				{activeUser ? (
-					<Menu.Item key="4">nav 4</Menu.Item>
+					<Button type="ghost" icon={<UserOutlined />}>
+						Mi cuenta
+					</Button>
 				) : (
-					<Menu.Item key="5">nav 5</Menu.Item>
+					<Button type="primary" icon={<LoginOutlined />}>
+						Ingresar
+					</Button>
 				)}
-				<Menu.Item>
-					<CartDropdownIcon toggleCartHidden={() => {}} itemCount="2" />
-				</Menu.Item>
-				{hidden ? null : <CartDropdown cartItems={cartItems} />}
-			</Menu>
-		</>
+			</Menu.Item>
+			<Menu.Item key="cart" className="cart" icon={<ShoppingOutlined />}></Menu.Item>
+		</Menu>
 	);
 };
 

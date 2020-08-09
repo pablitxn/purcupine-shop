@@ -25,3 +25,24 @@ const Product: FC<ProductProps> = ({ item, addItem }) => {
 };
 
 export default Product;
+
+// <Card
+//     style={{ width: 300 }}
+//     cover={
+//       <img
+//         alt="example"
+//         src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+//       />
+//     }
+//     actions={[
+//       <SettingOutlined key="setting" />,
+//       <EditOutlined key="edit" />,
+//       <EllipsisOutlined key="ellipsis" />,
+//     ]}
+//   >
+//     <Meta
+//       avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+//       title="Card title"
+//       description="This is the description"
+//     />
+//   </Card>,

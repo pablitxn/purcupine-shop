@@ -11,8 +11,6 @@ import {
 	ShoppingOutlined,
 	HomeFilled,
 } from "@ant-design/icons";
-// Assets
-import Logo from "assets/icons/logo";
 
 const Navbar: FC<INavbar> = ({ activeUser }) => {
 	const [state, setState] = useState({ current: "mail" });

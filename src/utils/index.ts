@@ -307,3 +307,8 @@ export const offers = [
     price: 40,
   }
 ]
+
+export const sessionRegex: any = {
+  username: /^[\s\w]{4,20}/,
+  password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/
+};

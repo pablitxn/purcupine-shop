@@ -4,27 +4,31 @@ import { FC } from "react";
 // Components
 import SignInForm from "components/auth/sign-in-form/sign-in-form.component";
 // Hooks
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { useNavbar } from "hooks";
 // AntD
 import { Row, Col, Typography } from "antd";
+// Firebase
+import { loginWithGoogle, getCurrentUser } from "firebase/client";
 
 const { Title } = Typography;
 
 const SignIn: FC = () => {
-	// const { session } = useNavbar();
+	const [user, setUser] = useState(undefined);
 
 	const handleSubmit = ({ username, password }: any) => {
 		console.log(`el usuario es ${username} y su pass ${password}`);
 	};
 
-	const handleGoogleSignIn = () => {};
-
 	const forgotPassButton = () => console.log("forgotPassButton");
 
-	// useEffect(() => {
-	// 	session && h.push("/");
-	// }, []);
+	useEffect(() => {
+		getCurrentUser(setUser);
+	}, []);
+
+	useEffect(() => {
+		console.log(user);
+	}, [user]);
 
 	return (
 		<Row
@@ -55,7 +59,7 @@ const SignIn: FC = () => {
 					<SignInForm
 						onSubmit={handleSubmit}
 						forgotPassButton={forgotPassButton}
-						onSignInGoogle={handleGoogleSignIn}
+						onSignInGoogle={loginWithGoogle}
 					/>
 				</Row>
 			</Col>

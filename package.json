@@ -9,6 +9,7 @@
     "storybook": "start-storybook"
   },
   "dependencies": {
+    "@ant-design/aliyun-theme": "^0.0.4",
     "@types/firebase": "^3.2.1",
     "@types/jest": "^26.0.8",
     "@zeit/next-less": "^1.0.1",

@@ -3,6 +3,8 @@ import { FC } from "react";
 // Hooks
 import { useAccountValidator } from "hooks";
 import { useState } from "react";
+// Components
+import Navigation from "components/_shared/navigation/navigation.component";
 // AntD
 import { Col, Row, Input, Form, Button } from "antd";
 // Types
@@ -78,7 +80,7 @@ const SignInForm: FC<ISignInForm> = ({ onSubmit, forgotPassButton, onSignInGoogl
 					</Col>
 				</Row>
 				<Row justify="center" align="middle">
-					<a onClick={forgotPassButton}>¿Olvidaste tu contraseña?</a>
+					<Navigation href="/auth/forgot-pass">¿Olvidaste tu contraseña?</Navigation>
 				</Row>
 			</Form.Item>
 		</Form>

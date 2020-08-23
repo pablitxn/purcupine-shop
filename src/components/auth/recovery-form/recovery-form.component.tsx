@@ -2,6 +2,8 @@
 import { FC, useState } from "react";
 // AntD
 import { Input, Form, Button, Row } from "antd";
+// Components
+import Navigation from "components/_shared/navigation/navigation.component";
 // Types
 import { IRecoveryForm } from "./recovery-form.types";
 
@@ -27,7 +29,7 @@ const RecoveryForm: FC<IRecoveryForm> = ({ onSubmit, goBackButton }) => {
 		<Form
 			onFinish={handleSubmit}
 			style={{
-				width: "100%",
+				width: "100%"
 			}}
 		>
 			<Form.Item
@@ -52,7 +54,7 @@ const RecoveryForm: FC<IRecoveryForm> = ({ onSubmit, goBackButton }) => {
 					</Button>
 				</Row>
 				<Row justify="center" align="middle">
-					<a onClick={goBackButton}>Regresar al login</a>
+					<Navigation href="/auth/sign-in">Regresar al login</Navigation>
 				</Row>
 			</Form.Item>
 		</Form>

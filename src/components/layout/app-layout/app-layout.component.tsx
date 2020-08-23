@@ -4,7 +4,7 @@ import { IAppLayout } from "./app-layout.types";
 // Context
 import { AppContext } from "state/app-context";
 // Hooks
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 // Custom Components
 import Navbar from "components/layout/navbar/navbar.component";
 // Styles
@@ -14,17 +14,13 @@ import { Layout } from "antd";
 
 const { Header, Footer, Content } = Layout;
 
-const AppLayout: FC<IAppLayout> = ({ children, navbarProps }) => {
+const AppLayout: FC<IAppLayout> = ({ children }) => {
 	const { user } = useContext(AppContext);
-
-	useEffect(() => {
-		console.log("user context", user);
-	}, [user]);
 
 	return (
 		<Layout>
-			<Header className="header">
-				<Navbar {...navbarProps} style={{ width: "100%" }} />
+			<Header className="header" style={{ width: "100%" }}>
+				<Navbar activeUser={user} />
 			</Header>
 			<Content className="site-layout">{children}</Content>
 			<Footer className="footer">porcupine-shop® 2020 </Footer>

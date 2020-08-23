@@ -3,13 +3,16 @@ import { FC, useState } from "react";
 import { INavbar } from "./navbar.types";
 // Styles
 import "./navbar.styles.less";
+// Components
+import ButtonWithNavigation from "components/_shared/button-with-navigation/button-with-navigation.component";
+import Link from "next/link";
 // AntD
-import { Menu, Input, Button } from "antd";
+import { Menu, Input } from "antd";
 import {
 	LoginOutlined,
 	UserOutlined,
 	ShoppingOutlined,
-	HomeFilled,
+	HomeFilled
 } from "@ant-design/icons";
 
 const Navbar: FC<INavbar> = ({ activeUser }) => {
@@ -42,14 +45,18 @@ const Navbar: FC<INavbar> = ({ activeUser }) => {
 				/>
 			</Menu.Item>
 			<Menu.Item key="session" className="session">
-				{activeUser ? (
-					<Button type="ghost" icon={<UserOutlined />}>
+				{false ? (
+					<ButtonWithNavigation type="ghost" icon={<UserOutlined />} href="/my-account">
 						Mi cuenta
-					</Button>
+					</ButtonWithNavigation>
 				) : (
-					<Button type="primary" icon={<LoginOutlined />}>
+					<ButtonWithNavigation
+						type="primary"
+						icon={<LoginOutlined />}
+						href="/auth/sign-in"
+					>
 						Ingresar
-					</Button>
+					</ButtonWithNavigation>
 				)}
 			</Menu.Item>
 			<Menu.Item key="cart" className="cart" icon={<ShoppingOutlined />}></Menu.Item>

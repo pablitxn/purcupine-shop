@@ -2,6 +2,8 @@
 import { FC } from "react";
 // Styles
 import "./styles.less";
+// Context
+import AppContext from "state/app-context";
 
 interface App {
 	Component: any;
@@ -9,7 +11,11 @@ interface App {
 }
 
 const App: FC<App> = ({ Component, pageProps }) => {
-	return <Component {...pageProps} />;
+	return (
+		<AppContext>
+			<Component {...pageProps} />
+		</AppContext>
+	);
 };
 
 export default App;

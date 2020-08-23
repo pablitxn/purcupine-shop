@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 // AntD
 import { Row, Col, Typography } from "antd";
 // Firebase
-import { loginWithGoogle, getCurrentUser } from "firebase/client";
+import { loginWithGoogle, getCurrentUser } from "state/firebase-client";
 
 const { Title } = Typography;
 

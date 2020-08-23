@@ -1,5 +1,6 @@
 // Types
 import { FC } from "react";
+import { ISignInForm, HandleChange } from "./sign-in-form.types";
 // Hooks
 import { useAccountValidator } from "hooks";
 import { useState } from "react";
@@ -7,10 +8,11 @@ import { useState } from "react";
 import Navigation from "components/_shared/navigation/navigation.component";
 // AntD
 import { Col, Row, Input, Form, Button } from "antd";
-// Types
-import { ISignInForm, HandleChange } from "./sign-in-form.types";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+// Styles
+import "./sign-in-form.styles.less";
 
-const SignInForm: FC<ISignInForm> = ({ onSubmit, forgotPassButton, onSignInGoogle }) => {
+const SignInForm: FC<ISignInForm> = ({ onSubmit, onSignInGoogle }) => {
 	const [formData, setFormData] = useState({
 		username: "",
 		password: ""
@@ -29,51 +31,46 @@ const SignInForm: FC<ISignInForm> = ({ onSubmit, forgotPassButton, onSignInGoogl
 	};
 
 	return (
-		<Form
-			onFinish={handleSubmit}
-			style={{
-				width: "100%"
-			}}
-		>
+		<Form onFinish={handleSubmit} className="form">
 			<Form.Item
-				label="Username"
 				hasFeedback
 				validateStatus={formValidations.username ? "error" : ""}
-				help={formValidations.username ? "El usuario es válido" : null}
+				help={formValidations.username ? "El usuario no es válido" : null}
+				className="item"
 			>
+				<span className="label">Username</span>
 				<Input
-					id="username"
 					name="username"
 					onChange={handleChange}
 					value={formData.username}
-					// prefix={}
+					prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
 					placeholder="Username"
 				/>
 			</Form.Item>
 			<Form.Item
-				label="Contraseña"
 				hasFeedback
 				validateStatus={formValidations.password ? "error" : ""}
 				help={formValidations.password ? "La contraseña es inválida" : null}
+				className="item"
 			>
+				<span className="label">Password</span>
 				<Input.Password
-					id="password"
 					name="password"
 					onChange={handleChange}
 					value={formData.password}
-					// prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+					prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
 					type="password"
 					placeholder="Password"
 				/>
 			</Form.Item>
-			<Form.Item>
-				<Row justify="center" align="middle">
-					<Col span={12}>
+			<Form.Item className="item">
+				<Row justify="center" align="middle" className="options">
+					<Col span={11} pull={1}>
 						<Button block type="primary" htmlType="submit">
 							Iniciar Sesión
 						</Button>
 					</Col>
-					<Col span={12}>
+					<Col span={11} push={1}>
 						<Button block type="ghost" onClick={onSignInGoogle}>
 							Conectar con Gmail
 						</Button>
@@ -81,6 +78,9 @@ const SignInForm: FC<ISignInForm> = ({ onSubmit, forgotPassButton, onSignInGoogl
 				</Row>
 				<Row justify="center" align="middle">
 					<Navigation href="/auth/forgot-pass">¿Olvidaste tu contraseña?</Navigation>
+				</Row>
+				<Row justify="center" align="middle">
+					<Navigation href="/">Volver al incio</Navigation>
 				</Row>
 			</Form.Item>
 		</Form>

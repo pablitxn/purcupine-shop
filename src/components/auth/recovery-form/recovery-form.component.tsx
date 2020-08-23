@@ -1,13 +1,16 @@
 // React
 import { FC, useState } from "react";
 // AntD
-import { Input, Form, Button, Row } from "antd";
+import { Input, Form, Button, Row, Col } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 // Components
 import Navigation from "components/_shared/navigation/navigation.component";
 // Types
 import { IRecoveryForm } from "./recovery-form.types";
+// Styles
+import "./recovery-form.styles.less";
 
-const RecoveryForm: FC<IRecoveryForm> = ({ onSubmit, goBackButton }) => {
+const RecoveryForm: FC<IRecoveryForm> = ({ onSubmit }) => {
 	const [email, setEmail] = useState("");
 	const [error, setError] = useState(false);
 
@@ -26,30 +29,25 @@ const RecoveryForm: FC<IRecoveryForm> = ({ onSubmit, goBackButton }) => {
 	};
 
 	return (
-		<Form
-			onFinish={handleSubmit}
-			style={{
-				width: "100%"
-			}}
-		>
+		<Form onFinish={handleSubmit} className="form">
 			<Form.Item
-				label="Email"
 				hasFeedback
 				validateStatus={error ? "error" : ""}
 				help={error ? "Revisa que el correo sea correcto" : null}
+				className="item"
 			>
+				<span className="label">Email</span>
 				<Input
-					id="email"
 					name="email"
 					onChange={handleChange}
 					value={email}
-					// prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+					prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
 					placeholder="Email"
 				/>
 			</Form.Item>
-			<Form.Item>
+			<Form.Item className="item">
 				<Row justify="center" align="middle">
-					<Button type="primary" htmlType="submit">
+					<Button type="primary" htmlType="submit" className="submit">
 						Enviar Email
 					</Button>
 				</Row>

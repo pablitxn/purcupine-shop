@@ -9,6 +9,5 @@ export type HandleChange = (event: ChangeEvent<HTMLInputElement>) => void
 
 export interface ISignInForm {
   onSubmit: ({ username, password }: User) => void
-  forgotPassButton: () => void
   onSignInGoogle: () => void
 }

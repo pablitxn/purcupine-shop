@@ -1,13 +1,14 @@
 // Types
-import { FC, useState } from "react";
-import { INavbar } from "./navbar.types";
-// Styles
-import "./navbar.styles.less";
+import { FC, useEffect } from "react";
 // Components
 import ButtonWithNavigation from "components/_shared/button-with-navigation/button-with-navigation.component";
-import Link from "next/link";
+import Navigation from "components/_shared/navigation/navigation.component";
+// Styles
+import "./navbar.styles.less";
+// Hooks
+import { useNavbar } from "hooks";
 // AntD
-import { Menu, Input } from "antd";
+import { Menu, Input, Row, Col, Button } from "antd";
 import {
 	LoginOutlined,
 	UserOutlined,
@@ -15,52 +16,82 @@ import {
 	HomeFilled
 } from "@ant-design/icons";
 
-const Navbar: FC<INavbar> = ({ activeUser }) => {
-	const [state, setState] = useState({ current: "mail" });
+const { Search } = Input;
 
-	const { Search } = Input;
-	const { current } = state;
+const Navbar: FC = () => {
+	const alignCenter = { display: "flex", alignItems: "center" };
+	const { current, user, handleClick } = useNavbar();
 
-	const handleNavigation = (e) => {
-		console.log(`navbar / handleNavigation -> key: ${e.key}`);
-		setState({ ...state, current: e.key });
-	};
+	useEffect(() => {
+		console.log("navbar user ->", user);
+	}, [user]);
 
 	return (
-		<Menu
-			theme="dark"
-			mode="horizontal"
-			defaultSelectedKeys={["1"]}
-			onClick={handleNavigation}
-			selectedKeys={[current]}
-			className="navbar"
-		>
-			<Menu.Item key="home" className="logo" icon={<HomeFilled />}></Menu.Item>
-			<Menu.Item className="search">
+		<Row justify="center">
+			<Col span={2}>
+				<Menu
+					theme="dark"
+					mode="horizontal"
+					onClick={handleClick}
+					selectedKeys={[]}
+					className="navbar"
+				>
+					<Menu.Item key="home" className="logo" style={alignCenter}>
+						<Navigation href="/">
+							<HomeFilled />
+						</Navigation>
+					</Menu.Item>
+				</Menu>
+			</Col>
+
+			<Col span={18} style={alignCenter}>
 				<Search
 					placeholder="¿Qué producto estás buscando?"
 					onSearch={(value) => console.log(value)}
 					enterButton
 					size="large"
 				/>
-			</Menu.Item>
-			<Menu.Item key="session" className="session">
-				{false ? (
-					<ButtonWithNavigation type="ghost" icon={<UserOutlined />} href="/my-account">
-						Mi cuenta
-					</ButtonWithNavigation>
-				) : (
-					<ButtonWithNavigation
-						type="primary"
-						icon={<LoginOutlined />}
-						href="/auth/sign-in"
-					>
-						Ingresar
-					</ButtonWithNavigation>
-				)}
-			</Menu.Item>
-			<Menu.Item key="cart" className="cart" icon={<ShoppingOutlined />}></Menu.Item>
-		</Menu>
+			</Col>
+
+			<Col span={4}>
+				<Menu
+					theme="dark"
+					mode="horizontal"
+					onClick={handleClick}
+					selectedKeys={[]}
+					className="navbar"
+				>
+					{user && (
+						<Menu.Item key="my-account" className="session">
+							<ButtonWithNavigation
+								href="/my-account"
+								type="default"
+								icon={<UserOutlined />}
+							>
+								Mi cuenta
+							</ButtonWithNavigation>
+						</Menu.Item>
+					)}
+					{user === null && (
+						<Menu.Item key="sign-in" className="session">
+							<ButtonWithNavigation
+								href="/auth/sign-in"
+								type="primary"
+								icon={<LoginOutlined />}
+							>
+								Ingresar
+							</ButtonWithNavigation>
+						</Menu.Item>
+					)}
+					{user === undefined && <Menu.Item>loading...</Menu.Item>}
+					<Menu.Item key="cart" className="cart" style={alignCenter}>
+						<Navigation href="/cart">
+							<ShoppingOutlined />
+						</Navigation>
+					</Menu.Item>
+				</Menu>
+			</Col>
+		</Row>
 	);
 };
 

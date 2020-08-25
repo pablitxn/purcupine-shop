@@ -7,7 +7,7 @@ import Link from "next/link";
 
 interface IButtonWithNavigation {
 	icon: ReactNode;
-	children: ReactNode;
+	children?: ReactNode;
 	href: string;
 	type: "text" | "link" | "ghost" | "primary" | "default" | "dashed";
 }

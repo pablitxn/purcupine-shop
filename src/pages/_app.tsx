@@ -3,7 +3,11 @@ import { FC } from "react";
 // Styles
 import "./styles.less";
 // Context
-import AppContext from "state/app-context";
+import ContextProvider from "state/app-context";
+// Hooks
+import { useEffect, useState } from "react";
+// Firebase
+import { getCurrentUser } from "state/firebase-client";
 
 interface App {
 	Component: any;
@@ -11,10 +15,16 @@ interface App {
 }
 
 const App: FC<App> = ({ Component, pageProps }) => {
+	const [user, setUser] = useState(undefined);
+
+	useEffect(() => {
+		getCurrentUser(setUser);
+	}, []);
+
 	return (
-		<AppContext>
+		<ContextProvider user={user}>
 			<Component {...pageProps} />
-		</AppContext>
+		</ContextProvider>
 	);
 };
 

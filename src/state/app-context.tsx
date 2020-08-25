@@ -6,17 +6,11 @@ AppContext.displayName = "App Context";
 
 interface IAppContext {
 	children: ReactNode;
+	user: any;
 }
 
-const ContextComponent: FC<IAppContext> = ({ children }) => {
-	const initialValue = {
-		user: {
-			name: "",
-			email: ""
-		}
-	};
-
-	return <AppContext.Provider value={initialValue}>{children}</AppContext.Provider>;
+const ContextProvider: FC<IAppContext> = ({ children, user }) => {
+	return <AppContext.Provider value={user}>{children}</AppContext.Provider>;
 };
 
-export default ContextComponent;
+export default ContextProvider;

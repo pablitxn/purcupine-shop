@@ -1,5 +1,11 @@
-// Hooks
-import { useState } from "react";
+// React
+import { useState, useContext } from "react";
+// Router
+import { useRouter } from "next/router";
+// Context
+import { AppContext } from "state/app-context";
+
+type HandleClick = (event: MenuEvent) => void;
 
 type MenuEvent = {
 	item: any;
@@ -9,12 +15,14 @@ type MenuEvent = {
 };
 
 export const useNavbar = () => {
-	// const [current, setCurrent] = useState("");
-	// const $activeUser = useSelector((state: any) => activeUserSelector(state));
-	// const session = !!$activeUser;
+	const [current, setCurrent] = useState("");
+	const router = useRouter();
+	const user = useContext(AppContext);
 
-	const currentUser = { name: "test" };
-	const session = true;
+	const handleClick: HandleClick = ({ key }) => {
+		setCurrent(key);
+		router.push(key);
+	};
 
-	return { currentUser, session };
+	return { current, handleClick, user };
 };

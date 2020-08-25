@@ -13,13 +13,13 @@ interface IAuthLayout {
 }
 
 const AuthLayout: FC<IAuthLayout> = ({ children }) => {
-	const { user } = useContext(AppContext);
+	// const { user } = useContext(AppContext);
 
 	const router = useRouter();
 
-	useEffect(() => {
-		console.log(router, user);
-	}, [router, user]);
+	// useEffect(() => {
+	// console.log(router, user);
+	// }, [router, user]);
 
 	return (
 		<div className="auth-layout">

@@ -1,5 +1,5 @@
 // Types
-import { FC, useEffect } from "react";
+import { FC } from "react";
 // Components
 import ButtonWithNavigation from "components/_shared/button-with-navigation/button-with-navigation.component";
 import Navigation from "components/_shared/navigation/navigation.component";
@@ -8,7 +8,7 @@ import "./navbar.styles.less";
 // Hooks
 import { useNavbar } from "hooks";
 // AntD
-import { Menu, Input, Row, Col, Button } from "antd";
+import { Menu, Input, Row, Col } from "antd";
 import {
 	LoginOutlined,
 	UserOutlined,
@@ -20,11 +20,7 @@ const { Search } = Input;
 
 const Navbar: FC = () => {
 	const alignCenter = { display: "flex", alignItems: "center" };
-	const { current, user, handleClick } = useNavbar();
-
-	useEffect(() => {
-		console.log("navbar user ->", user);
-	}, [user]);
+	const { user, handleClick } = useNavbar();
 
 	return (
 		<Row justify="center">

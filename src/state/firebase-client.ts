@@ -1,13 +1,14 @@
 import * as firebase from "firebase";
 
 const firebaseConfig = {
+  projectId: "purcupine-shop",
+  appId: "1:73832685024:web:6926b5403f519cc6b15f85",
+  databaseURL: "https://purcupine-shop.firebaseio.com",
+  storageBucket: "purcupine-shop.appspot.com",
+  locationId: "southamerica-east1",
   apiKey: "AIzaSyBJTSJEntNqU8rGurHMkY-oONZHT5kTLkM",
   authDomain: "purcupine-shop.firebaseapp.com",
-  databaseURL: "https://purcupine-shop.firebaseio.com",
-  projectId: "purcupine-shop",
-  storageBucket: "purcupine-shop.appspot.com",
   messagingSenderId: "73832685024",
-  appId: "1:73832685024:web:6926b5403f519cc6b15f85",
   measurementId: "G-9W6FEFJVVT"
 };
 
